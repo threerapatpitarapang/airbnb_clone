@@ -10,6 +10,8 @@ interface HomeProps {
   searchParams: IListingsParams;
 }
 
+export const dynamic = 'force-dynamic'
+
 const Home: React.FC<HomeProps> = async ({ searchParams }) => {
   //กำหนดสิ่งที่จะค้นหา
   const listings = await getListings(searchParams);
