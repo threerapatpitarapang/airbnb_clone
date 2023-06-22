@@ -22,7 +22,7 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'ที่ไหนก็ได้';
   }, [locationValue, getByValue]);
 
   const durationLabel = useMemo(() => {
@@ -35,18 +35,18 @@ const Search = () => {
         diff = 1;
       }
 
-      return `${diff} Days`;
+      return `${diff} วัน`;
     }
 
-    return 'Any Week'
+    return 'สัปดาห์ ทุกเวลา'
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
-      return `${guestCount} Guests`;
+      return `${guestCount} ผู้เข้าพัก`;
     }
 
-    return 'Add Guests';
+    return 'เพิ่มผู้เข้าพัก';
   }, [guestCount]);
 
   return ( 

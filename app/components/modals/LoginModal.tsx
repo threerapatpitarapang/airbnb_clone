@@ -42,7 +42,7 @@ const LoginModal = () => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success("Logged in");
+        toast.success("เข้าสู่ระบบ");
         router.refresh();
         loginModal.onClose();
       }
@@ -60,10 +60,10 @@ const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome Back" subtitle="Login to your account!" />
+      <Heading title="ยินดีต้อนรับกลับ" subtitle="กรุณาเข้าสู่ระบบด้วยบัญชีของคุณ!" />
       <Input
         id="email"
-        label="Email"
+        label="อีเมล์"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -71,7 +71,7 @@ const LoginModal = () => {
       />
       <Input
         id="password"
-        label="Password"
+        label="รหัสผ่าน"
         type="password"
         disabled={isLoading}
         register={register}
@@ -86,13 +86,13 @@ const LoginModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="เข้าสู่ระบบด้วย Google"
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="เข้าสู่ระบบด้วย Github"
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
@@ -105,7 +105,7 @@ const LoginModal = () => {
         "
       >
         <p>
-          First time using Airbnb?
+          ครั้งแรกกับการใช้ Airbnb?
           <span
             onClick={onToggle}
             className="
@@ -115,7 +115,7 @@ const LoginModal = () => {
             "
           >
             {" "}
-            Create an account
+            ลงทะเบียน
           </span>
         </p>
       </div>

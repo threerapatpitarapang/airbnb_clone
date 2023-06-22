@@ -63,13 +63,13 @@ const RentModal = () => {
   const bathroomCount = watch("bathroomCount");
   const imageSrc = watch("imageSrc");
 
-    const Map = useMemo(
-      () =>
-        dynamic(() => import("../Map"), {
-          ssr: false,
-        }),
-      []
-    );
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../Map"), {
+        ssr: false,
+      }),
+    []
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -87,7 +87,7 @@ const RentModal = () => {
     setStep((value) => value + 1);
   };
 
-//กด submit ถ้าใช่หน้าใส่ราคา
+  //กด submit ถ้าใช่หน้าใส่ราคา
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     if (step !== STEPS.PRICE) {
       return onNext();
@@ -98,14 +98,14 @@ const RentModal = () => {
     axios
       .post("/api/listings", data)
       .then(() => {
-        toast.success("Listing created!");
+        toast.success("เพิ่มรายการ!");
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error("Something went wrong.");
+        toast.error("บางอย่างผิดพลาด.");
       })
       .finally(() => {
         setIsLoading(false);
@@ -115,10 +115,10 @@ const RentModal = () => {
   //กำหนดปุ่ม ถัดไป
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return "Create";
+      return "เพิ่ม";
     }
 
-    return "Next";
+    return "ถัดไป";
   }, [step]);
 
   //กำหนดปุ่ม ย้อนกลับ
@@ -127,15 +127,15 @@ const RentModal = () => {
       return undefined;
     }
 
-    return "Back";
+    return "กลับ";
   }, [step]);
 
   //body เริม่ต้น
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
-        subtitle="Pick a category"
+        title="ข้อใดต่อไปนี้อธิบายสถานที่ของคุณได้ดีที่สุด?"
+        subtitle="เลือกหมวดหมู่"
       />
       <div
         className="
@@ -165,8 +165,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located?"
-          subtitle="Help guests find you!"
+          title="สถานที่ของคุณอยู่ที่ไหน?"
+          subtitle="ช่วยให้ลูกค้าพบคุณ!"
         />
         <CountrySelect
           value={location}
@@ -181,28 +181,28 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          title="แบ่งปันข้อมูลเบื้องต้นเกี่ยวกับสถานที่ของคุณ"
+          subtitle="คุณมีสิ่งอำนวยความสะดวกอะไรบ้าง?"
         />
         <Counter
           onChange={(value) => setCustomValue("guestCount", value)}
           value={guestCount}
-          title="Guests"
-          subtitle="How many guests do you allow?"
+          title="ลูกค้า"
+          subtitle="คุณอนุญาตให้มีจำนวนผู้พักกี่คน?"
         />
         <hr />
         <Counter
           onChange={(value) => setCustomValue("roomCount", value)}
           value={roomCount}
-          title="Rooms"
-          subtitle="How many rooms do you have?"
+          title="ห้อง"
+          subtitle="คุณมีกี่ห้อง?"
         />
         <hr />
         <Counter
           onChange={(value) => setCustomValue("bathroomCount", value)}
           value={bathroomCount}
-          title="Bathrooms"
-          subtitle="How many bathrooms do you have?"
+          title="ห้องนำ้"
+          subtitle="คุณมีห้องน้ำกี่ห้อง?"
         />
       </div>
     );
@@ -212,8 +212,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
+          title="เพิ่มรูปภาพสถานที่ของคุณ"
+          subtitle="แสดงให้แขกเห็นว่าสถานที่ของคุณเป็นอย่างไร!"
         />
         <ImageUpload
           onChange={(value) => setCustomValue("imageSrc", value)}
@@ -227,8 +227,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet works best!"
+          title="คุณจะอธิบายสถานที่ของคุณว่าอย่างไร?"
+          subtitle="สั้นเเละเข้าใจง่ายที่สุด!"
         />
         <Input
           id="title"
@@ -255,8 +255,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Now, set your price"
-          subtitle="How much do you charge per night?"
+          title="ตั้งราคาของคุณ"
+          subtitle="คิดราคาเท่าไหร่ต่อคืน?"
         />
         <Input
           id="price"
@@ -276,7 +276,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="ให้เช่าที่พักกับ Airbnb!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

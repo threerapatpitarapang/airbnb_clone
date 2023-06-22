@@ -29,11 +29,11 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 
     axios.delete(`/api/reservations/${id}`)
     .then(() => {
-      toast.success('Reservation cancelled');
+      toast.success('ยกเลิกการจองแล้ว');
       router.refresh();
     })
     .catch(() => {
-      toast.error('Something went wrong.')
+      toast.error('บางอย่างผิดพลาด.')
     })
     .finally(() => {
       setDeletingId('');
@@ -43,8 +43,8 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   return (
     <Container>
       <Heading
-        title="Reservations"
-        subtitle="Bookings on your properties"
+        title="การจอง"
+        subtitle="การจองที่พักของคุณ"
       />
       <div 
         className="
@@ -67,7 +67,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel="Cancel guest reservation"
+            actionLabel="ยกเลิกการจองของผู้เข้าพัก"
             currentUser={currentUser}
           />
         ))}

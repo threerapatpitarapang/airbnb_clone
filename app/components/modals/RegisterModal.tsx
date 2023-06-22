@@ -37,9 +37,9 @@ const RegisterModal = () => {
     axios
       .post("/api/register", data)
       .then(() => {
-        toast.success("Registered!");
+        toast.success("ลงทะเบียน!");
         registerModal.onClose();
-        // loginModal.onOpen();
+        loginModal.onOpen();
       })
       .catch((error) => {
         toast.error(error);
@@ -56,10 +56,10 @@ const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Heading title="ยินดีต้อนรับสู๋ Airbnb" subtitle="สร้างบัญชี!" />
       <Input
         id="email"
-        label="Email"
+        label="อีเมล์"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -67,7 +67,7 @@ const RegisterModal = () => {
       />
       <Input
         id="name"
-        label="Name"
+        label="ชื่อ"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -75,7 +75,7 @@ const RegisterModal = () => {
       />
       <Input
         id="password"
-        label="Password"
+        label="รหัสผ่าน"
         type="password"
         disabled={isLoading}
         register={register}
@@ -90,13 +90,13 @@ const RegisterModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="เข้าสู่ระบบด้วย Google"
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="เข้าสู่ระบบด้วย Github"
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
@@ -109,7 +109,7 @@ const RegisterModal = () => {
         "
       >
         <p>
-          Already have an account?
+          มีบัญชีอยู่แล้ว?
           <span
             onClick={onToggle}
             className="
@@ -119,7 +119,7 @@ const RegisterModal = () => {
             "
           >
             {" "}
-            Log in
+            เข้าสู่ระบบ
           </span>
         </p>
       </div>

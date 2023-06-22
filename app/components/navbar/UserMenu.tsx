@@ -54,7 +54,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             cursor-pointer
           "
         >
-          Airbnb your home
+          ให้เช่าที่พักกับ Airbnb
         </div>
         <div
           onClick={toggleOpen}
@@ -99,29 +99,29 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  label="My trips"
+                  label="การเดินทางของฉัน"
                   onClick={() => router.push("/trips")}
                 />
                 <MenuItem
-                  label="My favorites"
+                  label="Wishlist"
                   onClick={() => router.push("/favorites")}
                 />
                 <MenuItem
-                  label="My reservations"
+                  label="การจองของฉัน"
                   onClick={() => router.push("/reservations")}
                 />
                 <MenuItem
-                  label="My properties"
+                  label="ที่พักของฉันกับ Airbnb"
                   onClick={() => router.push("/properties")}
                 />
-                <MenuItem label="Airbnb your home" onClick={rentModal.onOpen} />
+                <MenuItem label="ให้เช่าที่พักกับ Airbnb" onClick={rentModal.onOpen} />
                 <hr />
-                <MenuItem label="Logout" onClick={() => signOut} />
+                <MenuItem label="ออกจากระบบ" onClick={signOut} />
               </>
             ) : (
               <>
-                <MenuItem label="Login" onClick={loginModal.onOpen} />
-                <MenuItem label="Sign up" onClick={registerModal.onOpen} />
+                <MenuItem label="เข้าสู่ระบบ" onClick={loginModal.onOpen} />
+                <MenuItem label="ลงทะเบียน" onClick={registerModal.onOpen} />
               </>
             )}
           </div>

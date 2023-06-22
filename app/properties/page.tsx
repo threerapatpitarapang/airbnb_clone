@@ -23,8 +23,8 @@ const PropertiesPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="No properties found"
-          subtitle="Looks like you have no properties."
+          title="ไม่พบที่พัก"
+          subtitle="ดูเหมือนว่าคุณไม่มีที่พักของคุณ."
         />
       </ClientOnly>
     );
